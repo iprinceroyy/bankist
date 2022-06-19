@@ -84,9 +84,32 @@ displayMovements(account1.movements);
 const calcDisplayBalance = function(movements) {
     const balance = movements.reduce((acc, curr) => acc + curr, 0);
 
-    labelBalance.textContent = `${balance} EUR`;
+    labelBalance.textContent = `${balance}€`;
 };
 calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function(movements) {
+    const incomes = movements
+        .filter(mov => mov > 0)
+        .reduce((acc, mov) => acc + mov, 0);
+
+    labelSumIn.textContent = `${incomes}€`;
+
+    const out = movements
+        .filter(mov => mov < 0)
+        .reduce((acc, mov) => acc + mov, 0);
+
+    labelSumOut.textContent = `${Math.abs(out)}€`;
+
+    const interest = movements
+        .filter(mov => mov > 0)
+        .map(deposit => (deposit * 1.2) / 100)
+        .filter(int => int >= 1)
+        .reduce((acc, int) => acc + int, 0);
+
+    labelSumInterest.textContent = `${interest}€`;
+};
+calcDisplaySummary(account1.movements);
 
 const createUserNames = function(accs) {
     accs.forEach(function(acc) {
@@ -244,9 +267,28 @@ createUserNames(accounts);
 // console.log(balance);
 
 // Maximum value
-const max = movements.reduce(
-    (acc, mov) => (acc > mov ? acc : mov),
-    movements[0]
-);
+// const max = movements.reduce(
+//     (acc, mov) => (acc > mov ? acc : mov),
+//     movements[0]
+// );
 
-console.log(max);
+// console.log(max);
+
+// Coding challenge #1
+const calcAverageHumanAge = function(ages) {
+    const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
+    console.log(humanAges);
+
+    const adultDogsHumanAge = humanAges.filter(age => age >= 18);
+    console.log(adultDogsHumanAge);
+
+    const avg =
+        adultDogsHumanAge.reduce((acc, age) => acc + age, 0) /
+        adultDogsHumanAge.length;
+
+    return avg;
+};
+
+console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+console.log(`--------------------------------------------`);
+console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
