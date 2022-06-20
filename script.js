@@ -178,6 +178,22 @@ btnTransfer.addEventListener('click', function(e) {
     }
 });
 
+// Request a loan
+btnLoan.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const amount = Number(inputLoanAmount.value);
+
+    if (amount > 0 && currentAccount.movements.some(mov => mov >= amount / 10)) {
+        // Add movement
+        currentAccount.movements.push(amount);
+
+        //update UI
+        updateUI(currentAccount);
+    }
+    inputLoanAmount.value = '';
+});
+
 // Close account
 btnClose.addEventListener('click', function(e) {
     e.preventDefault();
@@ -393,9 +409,13 @@ btnClose.addEventListener('click', function(e) {
 
 // console.log(movements);
 
-// // Equality
-// console.log(movements.includes(-130));
+// Equality
+console.log(movements.includes(-130));
 
-// // Condition
-// const anyDeposits = movements.some(mov => mov > 1500);
-// console.log(anyDeposits);
+// Some: Condition
+const anyDeposits = movements.some(mov => mov > 1500);
+console.log(anyDeposits);
+
+// Every: Condition
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
