@@ -80,10 +80,10 @@ const displayMovements = function(movements) {
     });
 };
 
-const calcDisplayBalance = function(movements) {
-    const balance = movements.reduce((acc, curr) => acc + curr, 0);
+const calcDisplayBalance = function(acc) {
+    acc.balance = acc.movements.reduce((acc, curr) => acc + curr, 0);
 
-    labelBalance.textContent = `${balance}€`;
+    labelBalance.textContent = `${acc.balance}€`;
 };
 
 const calcDisplaySummary = function(accs) {
@@ -119,7 +119,18 @@ const createUserNames = function(accs) {
 };
 createUserNames(accounts);
 
-// Event handler
+const updateUI = function(acc) {
+    //Display movements
+    displayMovements(acc.movements);
+
+    // Display balance
+    calcDisplayBalance(acc);
+
+    // Display summary
+    calcDisplaySummary(acc);
+};
+
+// Login
 let currentAccount;
 btnLogin.addEventListener('click', function(e) {
     // prevent form from submitting
@@ -139,15 +150,55 @@ btnLogin.addEventListener('click', function(e) {
         inputLoginUsername.value = inputLoginPin.value = '';
         inputLoginPin.blur();
 
-        //Display movements
-        displayMovements(currentAccount.movements);
-
-        // Display balance
-        calcDisplayBalance(currentAccount.movements);
-
-        // Display summary
-        calcDisplaySummary(currentAccount);
+        // Update UI
+        updateUI(currentAccount);
     }
+});
+
+// Transfer
+btnTransfer.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    const amount = Number(inputTransferAmount.value);
+    const recieverAcc = accounts.find(
+        acc => acc.username === inputTransferTo.value
+    );
+    inputTransferAmount.value = inputTransferTo.value = '';
+    if (
+        amount > 0 &&
+        recieverAcc &&
+        currentAccount.balance >= amount &&
+        recieverAcc.username !== currentAccount.username
+    ) {
+        // Doing transfer
+        currentAccount.movements.push(-amount);
+        recieverAcc.movements.push(amount);
+
+        updateUI(currentAccount);
+    }
+});
+
+// Close account
+btnClose.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    if (
+        inputCloseUsername.value == currentAccount.username &&
+        Number(inputClosePin.value) == currentAccount.pin
+    ) {
+        const index = accounts.findIndex(
+            acc => acc.username === currentAccount.username
+        );
+        console.log(index);
+
+        // Delete account
+        accounts.splice(index, 1);
+
+        // Hide UI
+        containerApp.style.opacity = 0;
+    }
+
+    inputCloseUsername.value = inputClosePin.value = '';
 });
 
 /////////////////////////////////////////////////
@@ -339,3 +390,12 @@ btnLogin.addEventListener('click', function(e) {
 
 // const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 // console.log(account);
+
+// console.log(movements);
+
+// // Equality
+// console.log(movements.includes(-130));
+
+// // Condition
+// const anyDeposits = movements.some(mov => mov > 1500);
+// console.log(anyDeposits);
