@@ -479,27 +479,83 @@ btnSort.addEventListener('click', function(e) {
 // movements.sort((a, b) => a - b);
 // console.log(movements);
 
-console.log([1, 2, 3, 4, 5, 6, 7]);
-console.log(new Array(1, 2, 3, 4, 5, 6));
+// console.log([1, 2, 3, 4, 5, 6, 7]);
+// console.log(new Array(1, 2, 3, 4, 5, 6));
 
-// Empty arrays + fill method
-const x = new Array(7);
-console.log(x);
+// // Empty arrays + fill method
+// const x = new Array(7);
+// console.log(x);
 
-x.fill(2, 3);
-console.log(x);
+// x.fill(2, 3);
+// console.log(x);
 
-// Array.from
-const arr = Array.from({ length: 7 }, () => 1);
-console.log(arr);
+// // Array.from
+// const arr = Array.from({ length: 7 }, () => 1);
+// console.log(arr);
 
-const z = Array.from({ length: 7 }, (_, i) => i + 1);
-console.log(z);
+// const z = Array.from({ length: 7 }, (_, i) => i + 1);
+// console.log(z);
 
-labelBalance.addEventListener('click', function() {
-    const movementsUI = Array.from(
-        document.querySelectorAll('.movements__value')
-    );
+// labelBalance.addEventListener('click', function() {
+//     const movementsUI = Array.from(
+//         document.querySelectorAll('.movements__value')
+//     );
 
-    console.log(movementsUI.map(el => el.textContent.replace('€', '')));
-});
+//     console.log(movementsUI.map(el => el.textContent.replace('€', '')));
+// });
+
+// 1.
+// const bankDepositSum = accounts
+//     .flatMap(acc => acc.movements)
+//     .filter(mov => mov > 0)
+//     .reduce((sum, curr) => sum + curr, 0);
+
+// console.log(bankDepositSum);
+
+// // 2.
+// const numDeposits1000 = accounts
+//     .flatMap(acc => acc.movements)
+//     .reduce((sum, curr) => (curr >= 1000 ? ++sum : sum), 0);
+
+// console.log(numDeposits1000);
+
+// // 3.
+// const sums = accounts
+//     .flatMap(acc => acc.movements)
+//     .reduce(
+//         (sum, cur) => {
+//             //cur > 0 ? (sum.deposits += cur) : (sum.withdrawls += cur);
+//             sum[cur > 0 ? 'deposits' : 'withdrawls'] += cur;
+//             return sum;
+//         }, { deposits: 0, withdrawls: 0 }
+//     );
+// console.log(sums);
+
+// // 4.
+// const convertToTitleCase = function(title) {
+//     const capitalize = str => str[0].toUpperCase() + str.slice(1);
+
+//     const exceptions = [
+//         'a',
+//         'is',
+//         'and',
+//         'an',
+//         'the',
+//         'but',
+//         'or',
+//         'on',
+//         'in',
+//         'with',
+//     ];
+
+//     const titleCase = title
+//         .toLowerCase()
+//         .split(' ')
+//         .map(word => (exceptions.includes(word) ? word : capitalize(word)))
+//         .join(' ');
+
+//     return capitalize(titleCase);
+// };
+
+// console.log(convertToTitleCase('priNce roy is Very smart boy'));
+// console.log(convertToTitleCase('and here is a good example'));
