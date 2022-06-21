@@ -462,19 +462,44 @@ btnSort.addEventListener('click', function(e) {
 // console.log(overallBalance2);
 
 // Strings
-const owner = ['Jonas', 'Zach', 'Adam', 'Martha'];
-console.log(owner.sort());
+// const owner = ['Jonas', 'Zach', 'Adam', 'Martha'];
+// console.log(owner.sort());
 
-// Numbers
-console.log(movements);
+// // Numbers
+// console.log(movements);
 
-// return < 0, A, B (keep order)
-// return > 0, B, A (switch order)
+// // return < 0, A, B (keep order)
+// // return > 0, B, A (switch order)
 
-// Ascending
-// movements.sort((a, b) => {
-//     return a > b ? 1 : -1;
-// });
-// Alter
-movements.sort((a, b) => a - b);
-console.log(movements);
+// // Ascending
+// // movements.sort((a, b) => {
+// //     return a > b ? 1 : -1;
+// // });
+// // Alter
+// movements.sort((a, b) => a - b);
+// console.log(movements);
+
+console.log([1, 2, 3, 4, 5, 6, 7]);
+console.log(new Array(1, 2, 3, 4, 5, 6));
+
+// Empty arrays + fill method
+const x = new Array(7);
+console.log(x);
+
+x.fill(2, 3);
+console.log(x);
+
+// Array.from
+const arr = Array.from({ length: 7 }, () => 1);
+console.log(arr);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+
+labelBalance.addEventListener('click', function() {
+    const movementsUI = Array.from(
+        document.querySelectorAll('.movements__value')
+    );
+
+    console.log(movementsUI.map(el => el.textContent.replace('€', '')));
+});
