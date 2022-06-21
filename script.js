@@ -410,12 +410,62 @@ btnClose.addEventListener('click', function(e) {
 // console.log(movements);
 
 // Equality
-console.log(movements.includes(-130));
+// console.log(movements.includes(-130));
 
-// Some: Condition
-const anyDeposits = movements.some(mov => mov > 1500);
-console.log(anyDeposits);
+// // Some: Condition
+// const anyDeposits = movements.some(mov => mov > 1500);
+// console.log(anyDeposits);
 
-// Every: Condition
-console.log(movements.every(mov => mov > 0));
-console.log(account4.movements.every(mov => mov > 0));
+// // Every: Condition
+// console.log(movements.every(mov => mov > 0));
+// console.log(account4.movements.every(mov => mov > 0));
+
+// // Separate callbacks
+// const deposit = mov => mov > 0;
+// console.log(movements.some(deposit));
+// console.log(movements.every(deposit));
+// console.log(movements.filter(deposit));
+
+// const arr = [
+//     [1, 2, 3],
+//     [4, 5, 6], 7, 8
+// ];
+// console.log(arr.flat());
+
+// const arrDeep = [
+//     [1, 2, 3],
+//     [4, [5, 6]], 7, 8
+// ];
+// console.log(arrDeep.flat(2));
+
+// // flat
+// const overallBalance = accounts
+//     .map(acc => acc.movements)
+//     .flat()
+//     .reduce((acc, mov) => acc + mov, 0);
+
+// console.log(overallBalance);
+
+// // flatMap
+// const overallBalance2 = accounts
+//     .flatMap(acc => acc.movements)
+//     .reduce((acc, mov) => acc + mov, 0);
+// console.log(overallBalance2);
+
+// Strings
+const owner = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owner.sort());
+
+// Numbers
+console.log(movements);
+
+// return < 0, A, B (keep order)
+// return > 0, B, A (switch order)
+
+// Ascending
+// movements.sort((a, b) => {
+//     return a > b ? 1 : -1;
+// });
+// Alter
+movements.sort((a, b) => a - b);
+console.log(movements);
