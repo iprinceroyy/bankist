@@ -259,14 +259,17 @@ btnLoan.addEventListener('click', function(e) {
     const amount = Math.floor(inputLoanAmount.value);
 
     if (amount > 0 && currentAccount.movements.some(mov => mov >= amount / 10)) {
-        // Add movement
-        currentAccount.movements.push(amount);
+        // Timer to wait for 3s after requesting a loan
+        setTimeout(function() {
+            // Add movement
+            currentAccount.movements.push(amount);
 
-        // Add loan date
-        currentAccount.movementsDates.push(new Date().toISOString());
+            // Add loan date
+            currentAccount.movementsDates.push(new Date().toISOString());
 
-        //update UI
-        updateUI(currentAccount);
+            //update UI
+            updateUI(currentAccount);
+        }, 3000);
     }
     inputLoanAmount.value = '';
 });
