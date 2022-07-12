@@ -1,6 +1,9 @@
 # Bankist App
 ### Online transaction app
 
-## Overview
- - [Screenshot](#screenshot)
- - [Built With](#built-with)
+## Table of Contents
+-   Overview
+    -  [Screenshot](#screenshot)
+-   My Process
+    -  [Built With](#built-with)
+    -  [What I Learned](#what-i-learned)
