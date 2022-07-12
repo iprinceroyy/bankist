@@ -3,18 +3,15 @@
 
 ## Table of Contents
 -   [Overview](#overview)
-    -   [Screenshot](#screenshot)
     -   [The challenge](#the-challenge)
+    -   [Screenshot](#screenshot)
+    -   [Links](#links)
 -   [My Process](#my-process)
     -   [Built With](#built-with)
     -   [What I Learned](#what-i-learned)
 -   [Author](#author)
 
 ## Overview
-
-### Screenshot
-
-![](./bankist.png)
 
 ### The challenge
 User should be able to:
@@ -27,6 +24,18 @@ User should be able to:
 -   View total debited amount
 -   View interest amount on requested loan
 
+### Screenshot
+
+![](./bankist.png)
+
+### Links
+Live site: [Live site url](https://appbankistt.netlify.app/)
+
 ## My Process
 
 ### Built with
+-   Semantic HTML Markup
+-   CSS custom properties
+-   Flexbox
+-   CSS Grid
+-   Mobile first workflow
