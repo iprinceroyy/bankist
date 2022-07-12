@@ -7,3 +7,7 @@
 -   My Process
     -  [Built With](#built-with)
     -  [What I Learned](#what-i-learned)
+-   Author
+
+### Screenshot
+[](./bankist.png)
